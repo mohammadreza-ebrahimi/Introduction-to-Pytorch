@@ -14,47 +14,19 @@ import numpy as np
 import tqdm
 from torch.utils.tensorboard import SummaryWriter
 
-
-# In[2]:
-
-
-#get_ipython().system('pip install pytorch_lightning')
-
-
-# In[3]:
-
-
-#get_ipython().system('pip install comet_ml')
-
-
-# In[4]:
-
-
+# add pytorch lightning library
 import pytorch_lightning as pl
 import comet_ml
 
 
-# In[5]:
-
+#check if GPU is available
 
 gpu = print(torch.cuda.get_device_name() if torch.cuda.is_available else 'cpu')
-
-
-# In[15]:
-
 
 num_gpu = torch.cuda.device_count()
 print('NUmber of available GPU(s):', num_gpu)
 
-
-# In[7]:
-
-
 device = print('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-# In[8]:
-
 
 from torchvision import datasets
 import torchvision.transforms as transforms
