@@ -139,8 +139,7 @@ class MNISTModel(pl.LightningModule): # special calss allows you
         return self(x)
     
     def configure_optimizers(self):
-        opt = torch.optim.Adam(self.parameters(), lr=0.02)
-        return opt
+        return torch.optim.Adam(self.parameters(), lr=0.001) 
         
             
 
@@ -173,18 +172,7 @@ for i in range(1, cols * rows + 1):
 plt.show()
 
 
-# **Trainer**  
-# _The most important part of the PyTorch Ligtning_  
-# It is a code that automates **traning**, **testing** and **validating** of your neural network. 
-# First you have construct an instance. Then fit it on your model.  
-# 
-# ```python
-# trainer = Trainer()
-# trianer.fit(model, train_dataloader, val_dataloader)
-# ```
-
-# In[30]:
-
+# Trainer
 
 trainer = pl.Trainer(
     gpus = AVAIL_GPUS,
@@ -194,8 +182,6 @@ trainer = pl.Trainer(
     
 )
 
-
-# In[31]:
 
 
 trainer.fit(model2, trainloader) #training
@@ -207,10 +193,6 @@ trainer.fit(model2, trainloader) #training
 # if you want to validate, you can also run validation
 
 trainer.validate(model2, testloader) #testing 
-
-
-# In[33]:
-
 
 p=trainer.predict(model2, testloader) #orediction on test data
 #trainer.predict(model2, trainloader) #orediction on train data
