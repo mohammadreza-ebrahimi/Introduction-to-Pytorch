@@ -141,16 +141,11 @@ class MNISTModel(pl.LightningModule): # special calss allows you
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=0.001) 
         
-            
-
-
-# In[22]:
-
+# defining the model            
 
 model2 = MNISTModel()
 
 
-# In[23]:
 
 
 X_batch, y_batch = iter(trainloader).next()
@@ -187,8 +182,6 @@ trainer = pl.Trainer(
 trainer.fit(model2, trainloader) #training
 
 
-# In[32]:
-
 
 # if you want to validate, you can also run validation
 
@@ -198,10 +191,7 @@ p=trainer.predict(model2, testloader) #orediction on test data
 #trainer.predict(model2, trainloader) #orediction on train data
 
 
-# ### Tensorboard in PytorchLightning
-
-# In[ ]:
-
+# Tensorboard in PytorchLightning
 
 
 
